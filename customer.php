@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customers Details | Banking System</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/style.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet">
+
+<style>
+body {
+ background-image: url("https://cdn.wallpapersafari.com/42/92/NWSiud.jpg");
+ font-weight: bold;
+ color:#343a40
+}
+tr{
+  margin: 2px;
+  background-color:#e2feff;
+  border: 5px solid black;
+  font-weight: bold;
+}
+
+div.transbox {
+  margin: 10px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+</head>
+</style>
+<body>
+
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  		<div class="container-fluid">
+    		<a class="navbar-brand" href="#">Banking System</a>
+    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      		<span class="navbar-toggler-icon"></span>
+    		</button>
+
+	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      		<ul class="navbar-nav ml-auto">
+	        		<li class="nav-item">
+	        		  <a class="nav-link" aria-current="page" href="index.php">Home</a>
+	        		</li>
+	        		<li class="nav-item">
+	        		  <a class="nav-link active" href="customer.php">Customers</a>
+	        		</li>
+	       			<li class="nav-item">
+	        		  <a class="nav-link" href="transfermoney.php">Transfer Money</a>
+	        		</li>
+	        		<li class="nav-item">
+	         		  <a class="nav-link" href="transactionhistory.php">Transaction History</a>
+	        		</li>
+	        	</ul>
+	    	</div>
+  		</div>
+	</nav>
+	<!-- navbar end -->
+
+	<!-- Table code -->
+	<div class="container-fluid">
+		<h3 style="text-align: center; margin-top: 10px; color:#fff"><b>All Customers</b></h3>
+		<div class="main">
+			<div class="center">
+				<div class="table-responsive">
+					<table>
+						<thead>
+							<tr>
+								<th label style="color:#343a40; width: 10px; padding: 5px; border: 5px solid black; margin: 0; "><b><div class="transbox">ID</div></b></th>
+								<th label style="color:#343a40; width: 10px; padding: 5px; border: 5px solid black; margin: 0; "><b><div class="transbox">NAME</div></b></th>
+								<th label style="color:#343a40; width: 10px; padding: 5px; border: 5px solid black; margin: 0; "><b><div class="transbox">EMAIL</div></b></th>
+								<th label style="color:#343a40; width: 10px; padding: 5px; border: 5px solid black; margin: 0; "><b><div class="transbox">BALANCE</div></b></th>
+							</tr>
+						</thead>
+						<tbody>
+						
+							
+							<?php
+								include 'config.php';
+								$sqlquery = " select * from customers";
+								$query = mysqli_query($con, $sqlquery);
+								$nums = mysqli_num_rows($query);
+								
+								while($result = mysqli_fetch_array($query)){
+							?>
+							<tr>
+								<td><?php echo $result['id']; ?></td>
+								<td><?php echo $result['name']; ?></td>
+								<td><span class="email-style"><?php echo $result['email']; ?></span> </td>
+								<td><?php echo $result['balance']; ?></td>
+							</tr>
+
+							<?php
+								}
+							?>
+						
+						</tbody>
+					</table>
+				</div> 	
+			</div>
+		</div>
+	</div>
+	<!-- End of table code -->
+
+
+	<footer>
+		<p class="p-3 bg-dark text-white text-center" style="margin-top: 150px; margin-bottom: 0px;">Designed by Janhavi Gosavi<br> <br>Incase of any query conatct Janhavi@gmail.com</p>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
